@@ -10,7 +10,6 @@ require('dotenv').config()
 require('./config/db')
 
 
-
 // Helmet : sécurisation des headers HTTP
 app.use(
     helmet({
@@ -42,13 +41,9 @@ app.use(express.json())
 
 
 // // Routes
-// const authRoutes = require('./routes/authRoutes')
-// const gameRoutes = require('./routes/gameRoutes')
-// // const tournamentRoutes = require('./routes/tournamentRoutes')
+const authRoutes = require('./routes/authRoutes')
 
-// app.use('/api/v1/auth', authRoutes)
-// app.use('/api/v1/game', gameRoutes)
-// // app.use('/api/v1/tournament', tournamentRoutes)
+app.use('/api/v1/auth', authRoutes)
 
 
 // Route principale
