@@ -7,6 +7,7 @@ import Login from './pages/login'
 import Register from './pages/register'
 import Publish from './pages/publish'
 import NotFound from './pages/notFound'
+import PrivateRoutes from './components/private'
 
 function App() {
   return (
@@ -14,12 +15,20 @@ function App() {
       <Header />
       <main className="flex-1">
         <Routes>
+
+
+
+          <Route element={<PrivateRoutes />}>
+            <Route path="/publish" element={<Publish />} />
+          </Route>
+
           <Route path="/" element={<Home />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/publish" element={<Publish />} />
           <Route path="/*" element={<NotFound />} />
+
+
         </Routes>
       </main>
       <Footer />
