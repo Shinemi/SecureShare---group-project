@@ -63,8 +63,7 @@ const register = async (req,res) =>  {
             user:{
                 id: user._id,
                 name: user.name,
-                email : user.email,
-                role : user.role,
+                email : user.email
             }
         })
 
@@ -109,19 +108,13 @@ const login = async (req,res) =>{
             user:{
                 id: user._id,
                 name: user.name,
-                email : user.email,
-                role : user.role,
+                email : user.email
             }
         })
-
         
     } catch (error) {
         res.status(500).json({message: 'server error during login', error: error.message})
     }
 }
-
-
-
-
 
 module.exports = {register, login }
