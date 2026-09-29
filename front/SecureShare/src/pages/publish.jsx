@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const API_URL = 'http://localhost:3000/api/v1/posts' // à adapter à ta route d'upload
+const API_URL = 'http://localhost:3000/api/v1/upload/image' // à adapter à ta route d'upload
 
 export default function Publish() {
   const token = localStorage.getItem('token')
