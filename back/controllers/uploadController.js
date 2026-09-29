@@ -33,9 +33,29 @@ exports.uploadImage = async (req, res) => {
         if (!req.file)
             return res.status(404).json({ message: "Image not found" })
 
+        const { idImage } = req.params
+
+        // Recherche de l'image en BDD
+        const image = await Image.findById(idImage)
+        if (!image) {
+            return res.status(404).json({
+                message: 'Image introuvable'
+            })
+        }
+
+        const uploadFolder = path.join(
+            process.cwd(),
+            'uploads',
+            'image'
+        )
+
+        await fs.mkdir(uploadFolder, {
+            recursive: true
+        })
+
         const filename = `${uuidv4()}.webp`
 
-        const outputPath = path.join(__dirname, '../uploads', filename)
+        const outputPath = path.join(uploadFolder, filename)
 
         await sharp(req.file.buffer)
             .resize({
@@ -48,15 +68,9 @@ exports.uploadImage = async (req, res) => {
             .toFile(outputPath)
 
 
-        const uploadFolder = path.join(
-            process.cwd(),
-            'upload',
-            'image'
-        )
-
-        await fs.mkdir(uploadFolder, {
-            recursive: true
-        })
+        // Enregistrement en BDD
+        image.img = `upload/${filename}`
+        await image.save()
 
         return res.status(201).json({
             message: 'Image enregistrée avec succès',
