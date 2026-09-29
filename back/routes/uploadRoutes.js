@@ -4,7 +4,6 @@ const authMiddleware = require('../middlewares/authMiddleware')
 const upload = require('../middlewares/multerMiddleware')
 const { uploadImage, createImage } = require('../controllers/uploadController')
 
-router.post('/create', authMiddleware, createImage)
-router.post('/:idImage', authMiddleware, upload, uploadImage)
+router.post('/create', authMiddleware, upload, createImage)
 
 module.exports = router
