@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const API_URL = 'http://localhost:3000/api/v1/uploads/create' 
+const API_URL = 'http://localhost:3000/api/v1/upload/create'
 
 export default function Publish() {
   const token = localStorage.getItem('token')
@@ -26,13 +26,15 @@ export default function Publish() {
 
     const formData = new FormData()
     formData.append('title', title.trim())
-    formData.append('caption', caption)
+    formData.append('description', caption)
     formData.append('image', file) // doit correspondre à upload.single('image')
 
     try {
       const res = await fetch(API_URL, {
         method: 'POST',
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: formData,
       })
       const data = await res.json()
