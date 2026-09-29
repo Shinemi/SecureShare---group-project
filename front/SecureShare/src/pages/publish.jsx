@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const API_URL = 'http://localhost:3000/api/v1/uploads/create' 
+const API_URL = 'http://localhost:3000/api/v1/upload/create' 
 
 export default function Publish() {
   const token = localStorage.getItem('token')
