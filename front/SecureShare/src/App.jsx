@@ -18,12 +18,7 @@ function App() {
           <Route path="/feed" element={<Feed />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route
-            path="/publish"
-            element={
-                <Publish />
-            }
-          />
+          <Route path="/publish" element={<Publish />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </main>
