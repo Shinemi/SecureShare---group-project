@@ -15,7 +15,7 @@ export default function Header() {
 
         <nav className="flex flex-wrap items-center gap-1">
           <NavLink to="/" className={linkClass}>Accueil</NavLink>
-          <NavLink to="/blog" className={linkClass}>Feed</NavLink>
+          <NavLink to="/feed" className={linkClass}>Feed</NavLink>
           <NavLink to="/publish" className={linkClass}>Créer un post</NavLink>
           <NavLink to="/login" className={linkClass}>Connexion</NavLink>
           <NavLink
