@@ -15,20 +15,14 @@ function App() {
       <Header />
       <main className="flex-1">
         <Routes>
-
-
-
           <Route element={<PrivateRoutes />}>
             <Route path="/publish" element={<Publish />} />
+            <Route path="/feed" element={<Feed />} />
           </Route>
-
           <Route path="/" element={<Home />} />
-          <Route path="/feed" element={<Feed />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/*" element={<NotFound />} />
-
-
         </Routes>
       </main>
       <Footer />

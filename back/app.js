@@ -39,6 +39,8 @@ app.use(limiter)
 // Middleware
 app.use(express.json())
 
+// Permet d'utiliser uploads dans le front
+app.use('/uploads', express.static('uploads'))
 
 // // Routes
 const authRoutes = require('./routes/authRoutes')
