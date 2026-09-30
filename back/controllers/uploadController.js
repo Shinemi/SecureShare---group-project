@@ -22,6 +22,12 @@ exports.createImage = async (req, res) => {
             })
         }
 
+        if (!req.user?._id) {
+            return res.status(401).json({ 
+                message: 'User not authenticated' 
+            }) 
+        }
+
         // Dossier de destination
         const uploadFolder = path.join(
             process.cwd(),
@@ -66,6 +72,18 @@ exports.createImage = async (req, res) => {
         const newImage = await image.save()
 
         return res.status(201).json(newImage)
+
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: err.message })
+    }
+}
+
+exports.getImage = async (req, res) => {
+    try {
+        
+        const img = await Image.find()
+        res.json(img)
 
     } catch (err) {
         console.error(err)

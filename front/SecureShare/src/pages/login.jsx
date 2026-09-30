@@ -1,13 +1,17 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const API_URL = 'http://localhost:3000/api/v1/auth/login'
 
 export default function Login() {
     const navigate = useNavigate()
+    const location = useLocation()
+
     const [form, setForm] = useState({ email: '', password: '' })
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
+
+    const from = location.state?.from?.pathname || '/'
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -28,7 +32,7 @@ export default function Login() {
             if (!res.ok) throw new Error(data.message || 'Erreur serveur')
 
             localStorage.setItem('token', data.token)
-            navigate('/publish')
+            navigate(from, { replace: true })
         } catch (err) {
             setError(err.message)
         } finally {
@@ -43,16 +47,6 @@ export default function Login() {
                 className="w-full max-w-sm bg-white p-6 rounded-xl shadow-md space-y-4"
             >
                 <h1 className="text-2xl font-bold text-center">Connexion</h1>
-
-                {/* <input
-                    type="text"
-                    name="name"
-                    placeholder="Nom"
-                    value={form.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                /> */}
 
                 <input
                     type="email"
