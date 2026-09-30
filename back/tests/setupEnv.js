@@ -1,0 +1,1 @@
+process.env.JWT_SECRET = 'bb1fee17e3c107905c0aa18c9eff78715d8deb43c6d767d1fd9b9a0d948c533f'
