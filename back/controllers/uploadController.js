@@ -50,7 +50,7 @@ exports.createImage = async (req, res) => {
         // Traitement + sauvegarde de l'image
         await sharp(req.file.buffer)
             .resize({
-                width: 1200,
+                width: 800,
                 withoutEnlargement: true
             })
             .webp({
