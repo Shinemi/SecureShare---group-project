@@ -117,4 +117,29 @@ const login = async (req,res) =>{
     }
 }
 
-module.exports = {register, login }
+const loginVulnerable = async (req, res) => {
+    try {
+        const { email, password } = req.body
+
+        const user = await User.findOne({
+            email,
+            password
+        })
+
+        if (!user) {
+            return res.status(401).json({
+                message: 'invalid credentials'
+            })
+        }
+
+        res.json({
+            message: 'Login successful'
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: 'server error'
+        })
+    }
+}
+
+module.exports = {register, login, loginVulnerable}

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import ImageCard from '../components/imageCard'
 
-
 const API_URL = 'http://localhost:3000/api/v1/upload/get'
 
 export default function Feed() {
@@ -27,7 +26,6 @@ export default function Feed() {
 
     return (
         <div className="max-w-md mx-auto p-6 space-y-4">
-            <h1>Le Feed de </h1>
             {images.map((img) => (
                 <ImageCard
                     key={img._id}
